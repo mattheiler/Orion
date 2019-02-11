@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Orion.Api.Students
+﻿namespace Orion.Api.Foos
 {
-    class FooData
+    public class FooData
     {
     }
 }
