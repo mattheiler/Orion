@@ -13,18 +13,23 @@ namespace Orion.Api.Foos
     public static class FooFunctions
     {
         [FunctionName("GetFoos")]
-        public static async Task<IActionResult> GetStudents([HttpTrigger("GET", Route = "students")] HttpRequest req, ILogger log)
+        public static async Task<IActionResult> GetFoos([HttpTrigger("GET", Route = "foos")] HttpRequest req, ILogger log)
         {
+            // TODO auth?
+            // TODO di?
+
             using (var context = new OrionDbContext())
             {
                 return new OkObjectResult(await context.Foo.ToListAsync());
             }
         }
 
-
         [FunctionName("GetFoo")]
-        public static async Task<IActionResult> GetStudent([HttpTrigger("GET", Route = "students/{id:int}")] HttpRequest req, ILogger log, int id)
+        public static async Task<IActionResult> GetFoo([HttpTrigger("GET", Route = "foos/{id:int}")] HttpRequest req, ILogger log, int id)
         {
+            // TODO auth?
+            // TODO di?
+
             using (var context = new OrionDbContext())
             {
                 return new OkObjectResult(await context.Foo.FindAsync(id));
