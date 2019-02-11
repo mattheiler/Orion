@@ -11,6 +11,9 @@ namespace Orion.Api.Foos
 {
     public static class GetFoos
     {
+        // TODO
+        // return new OkObjectResult(await ctx.Foo.SortBy(sortProperty, sortDirection).ToPageAsync(pageIndex, pageSize));
+
         [FunctionName("GetFoos")]
         public static async Task<IActionResult> Run([HttpTrigger("GET", Route = "foos")] HttpRequest req, ILogger log, [Inject] OrionDbContext ctx)
             => new OkObjectResult(await ctx.Foo.ToListAsync());

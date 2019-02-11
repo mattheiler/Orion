@@ -5,10 +5,6 @@ namespace Orion.Data
 {
     public class OrionDbContext : DbContext
     {
-        public OrionDbContext()
-        {
-        }
-
         public OrionDbContext(DbContextOptions<OrionDbContext> options)
             : base(options)
         {
