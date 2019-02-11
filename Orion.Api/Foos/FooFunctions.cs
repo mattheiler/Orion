@@ -15,8 +15,14 @@ namespace Orion.Api.Foos
         [FunctionName("GetFoos")]
         public static async Task<IActionResult> GetFoos([HttpTrigger("GET", Route = "foos")] HttpRequest req, ILogger log)
         {
-            // TODO auth?
-            // TODO di?
+            // TODO Authorization
+            // https://github.com/Azure/azure-functions-host/issues/33
+
+            // TODO Dependency Injection
+            // https://github.com/Azure/Azure-Functions/issues/299
+            // https://github.com/Azure/Azure-Functions/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+identity
+            // https://blog.wille-zone.de/post/azure-functions-dependency-injection/
+            // https://blog.wille-zone.de/post/azure-functions-proper-dependency-injection/
 
             using (var context = new OrionDbContext())
             {
@@ -27,9 +33,6 @@ namespace Orion.Api.Foos
         [FunctionName("GetFoo")]
         public static async Task<IActionResult> GetFoo([HttpTrigger("GET", Route = "foos/{id:int}")] HttpRequest req, ILogger log, int id)
         {
-            // TODO auth?
-            // TODO di?
-
             using (var context = new OrionDbContext())
             {
                 return new OkObjectResult(await context.Foo.FindAsync(id));
