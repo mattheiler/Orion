@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
 namespace Orion.Collections
 {
-    public enum SortDirection
-    {
-        Asc,
-        Desc
-    }
-
     public static class Sort
     {
         internal static readonly MethodInfo Info =
@@ -31,7 +23,7 @@ namespace Orion.Collections
 
             var parameter = Expression.Parameter(typeof(TSource));
             var type = typeof(TSource);
-            var body = (Expression)parameter;
+            var body = (Expression) parameter;
 
             foreach (var name in names)
             {
