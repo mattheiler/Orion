@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orion.Core", "Orion.Core\Or
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orion.Data", "Orion.Data\Orion.Data.csproj", "{8A4B2574-EC5A-421D-A989-B67AF6146C5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orion.App", "Orion.App\Orion.App.csproj", "{628DBD2B-4827-44BC-A00F-DCFE04E2FE12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orion.App", "Orion.App\Orion.App.csproj", "{628DBD2B-4827-44BC-A00F-DCFE04E2FE12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
