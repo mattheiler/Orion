@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Orion.Collections;
 using Orion.Data;
 using Orion.Data.Extensions;
+using Orion.Models;
 using Willezone.Azure.WebJobs.Extensions.DependencyInjection;
 
 namespace Orion.Api.Foos
