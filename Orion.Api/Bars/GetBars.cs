@@ -10,7 +10,7 @@ using Orion.Data.Extensions;
 using Orion.Models;
 using Willezone.Azure.WebJobs.Extensions.DependencyInjection;
 
-namespace Orion.Api.Foos
+namespace Orion.Api.Bars
 {
     public static class GetBars
     {
