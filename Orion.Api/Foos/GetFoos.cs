@@ -21,7 +21,7 @@ namespace Orion.Api.Foos
 
             var sortDirectionQuery = (string) req.Query["sortDirection"];
             var sortDirection = sortDirectionQuery != null ? (SortDirection?) Enum.Parse(typeof(SortDirection), sortDirectionQuery, true) : null;
-
+            
             var pageIndexQuery = (string) req.Query["pageIndex"];
             var pageIndex = pageIndexQuery != null ? int.Parse(pageIndexQuery) : 0;
 
@@ -33,7 +33,8 @@ namespace Orion.Api.Foos
             // TODO req.Query["pageIndex"].GetValueOrDefault<int>(0);
             // TODO req.Query["pageSize"].GetValueOrDefault<int>(20);
 
-            // TODO [FromQuery] PaginationOptions pagination
+            // something like...
+            // TODO [Query] PageOptions options
 
             return new OkObjectResult(await ctx.Foo.SortBy(sortProperty, sortDirection).ToPageAsync(pageIndex, pageSize));
         }
