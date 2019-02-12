@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using Orion.Api.Extensions;
 using Orion.Collections;
 using Orion.Data;
 using Orion.Data.Extensions;
-using Orion.Models;
+using Orion.Entities;
 using Willezone.Azure.WebJobs.Extensions.DependencyInjection;
 
 namespace Orion.Api.Bars
@@ -17,22 +18,10 @@ namespace Orion.Api.Bars
         [FunctionName("GetBars")]
         public static async Task<IActionResult> Run([HttpTrigger("GET", Route = "bars")] HttpRequest req, ILogger log, [Inject] OrionDbContext ctx)
         {
-            var sortPropertyQuery = (string) req.Query["sortProperty"];
-            var sortProperty = sortPropertyQuery ?? nameof(Foo.Id);
-
-            var sortDirectionQuery = (string) req.Query["sortDirection"];
-            var sortDirection = sortDirectionQuery != null ? (SortDirection?) Enum.Parse(typeof(SortDirection), sortDirectionQuery, true) : null;
-            
-            var pageIndexQuery = (string) req.Query["pageIndex"];
-            var pageIndex = pageIndexQuery != null ? int.Parse(pageIndexQuery) : 0;
-
-            var pageSizeQuery = (string) req.Query["pageSize"];
-            var pageSize = pageSizeQuery != null ? int.Parse(pageSizeQuery) : 0;
-
-            // TODO req.Query["sortProperty"].GetValueOrDefault(nameof(Foo.Id));
-            // TODO req.Query["sortDirection"].GetValueOrDefault<SortDirection>();
-            // TODO req.Query["pageIndex"].GetValueOrDefault<int>(0);
-            // TODO req.Query["pageSize"].GetValueOrDefault<int>(20);
+            var sortProperty = req.Query.GetValueOrDefault("sortProperty", nameof(Bar.Id));
+            var sortDirection = req.Query.GetValueOrDefault<SortDirection>("sortDirection");
+            var pageIndex = req.Query.GetValueOrDefault("pageIndex", 0);
+            var pageSize = req.Query.GetValueOrDefault("pageSize", 20);
 
             // something like...
             // TODO [Query] PageOptions options

@@ -1,4 +1,4 @@
-﻿namespace Orion.Models
+﻿namespace Orion.Entities
 {
     public class BazQux
     {

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Orion.Models;
+using Orion.Entities;
 
 namespace Orion.Data
 {

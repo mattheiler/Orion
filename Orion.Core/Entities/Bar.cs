@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Orion.Models
+namespace Orion.Entities
 {
     public class Bar
     {
