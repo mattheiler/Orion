@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using Orion.Data;
 using Willezone.Azure.WebJobs.Extensions.DependencyInjection;
 
-namespace Orion.Api.Bars
+namespace Orion.Api.Functions.Bars
 {
     public static class GetBar
     {

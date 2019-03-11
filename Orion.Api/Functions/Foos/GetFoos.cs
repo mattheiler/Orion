@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +10,14 @@ using Orion.Data.Extensions;
 using Orion.Entities;
 using Willezone.Azure.WebJobs.Extensions.DependencyInjection;
 
-namespace Orion.Api.Bars
+namespace Orion.Api.Functions.Foos
 {
-    public static class GetBars
+    public static class GetFoos
     {
-        [FunctionName("GetBars")]
-        public static async Task<IActionResult> Run([HttpTrigger("GET", Route = "bars")] HttpRequest req, ILogger log, [Inject] OrionDbContext ctx)
+        [FunctionName("GetFoos")]
+        public static async Task<IActionResult> Run([HttpTrigger("GET", Route = "foos")] HttpRequest req, ILogger log, [Inject] OrionDbContext ctx)
         {
-            var sortProperty = req.Query.GetValueOrDefault("sortProperty", nameof(Bar.Id));
+            var sortProperty = req.Query.GetValueOrDefault("sortProperty", nameof(Foo.Id));
             var sortDirection = req.Query.GetValueOrDefault<SortDirection>("sortDirection");
             var pageIndex = req.Query.GetValueOrDefault("pageIndex", 0);
             var pageSize = req.Query.GetValueOrDefault("pageSize", 20);
@@ -26,7 +25,7 @@ namespace Orion.Api.Bars
             // something like...
             // TODO [Query] PageOptions options
 
-            return new OkObjectResult(await ctx.Bar.SortBy(sortProperty, sortDirection).ToPageAsync(pageIndex, pageSize));
+            return new OkObjectResult(await ctx.Foo.SortBy(sortProperty, sortDirection).ToPageAsync(pageIndex, pageSize));
         }
     }
 }
